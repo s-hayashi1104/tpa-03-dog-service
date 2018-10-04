@@ -13,10 +13,9 @@
  * }
  */
 const parsePathParameters = function(originalPath, pathWithParams) {
-  //
-  // TODO
-  //
-  return {};
+  const paramsIndex = pathWithParams.split('/').join('').indexOf(':');
+  const params = originalPath.split('/').join('').slice(paramsIndex);
+  return { id: params };
 };
 
 module.exports = {

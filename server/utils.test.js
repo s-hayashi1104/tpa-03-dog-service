@@ -1,4 +1,4 @@
-const { parsePathParameters }  = require('./utils');
+const { parsePathParameters } = require('./utils');
 
 
 describe('parsePathParameters', () => {
