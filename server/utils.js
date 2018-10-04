@@ -13,8 +13,8 @@
  * }
  */
 const parsePathParameters = function(originalPath, pathWithParams) {
-  const paramsIndex = pathWithParams.split('/').join('').indexOf(':');
-  const params = originalPath.split('/').join('').slice(paramsIndex);
+  const paramsIndex = pathWithParams.replace('/', '').indexOf(':');
+  const params = originalPath.replace('/', '').slice(paramsIndex);
   return { id: params };
 };
 
