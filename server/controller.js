@@ -1,12 +1,16 @@
 const dog = require('./dog');
+const dogs = require('./data/dogs.json');
 
 const fetchDogById = (req, res) => {
   const { id } = req.myParams;
-  if (id < 0 || id > 9 || typeof id === 'undefined' || id === null) {
-    res.status(400).json({});
-    return;
+  if (typeof Number.parseInt(id, 10) === 'number') {
+    const SelectNumber = Number.parseInt(id, 10);
+    if (SelectNumber <= dogs.length + 1) {
+      return res.json(dog.getDogById(SelectNumber));
+    }
+    return res.status(400).json({});
   }
-  res.json(dog.getDogById(id));
+  return res.status(400).json({});
 };
 
 module.exports = {

@@ -6,7 +6,6 @@ const parsePathParameters = function(originalPath, pathWithParams) {
       const key = v.slice(1);
       const param = paramsArray[i];
       obj[key] = param;
-      console.log(obj);
     }
   });
   return obj;
