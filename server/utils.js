@@ -13,9 +13,18 @@
  * }
  */
 const parsePathParameters = function(originalPath, pathWithParams) {
-  const paramsIndex = pathWithParams.replace('/', '').indexOf(':');
-  const params = originalPath.replace('/', '').slice(paramsIndex);
-  return { id: params };
+  const obj = {};
+  const paramsArray = originalPath.split('/');
+  pathWithParams.split('/').forEach((v, i) => {
+    if (v[0] === ':') {
+      const key = v.slice(0);
+      const param = paramsArray[i];
+      Object.defineProperty(obj, key, {});
+      obj[key] = param;
+      console.log(obj);
+    }
+  });
+  return obj;
 };
 
 module.exports = {
