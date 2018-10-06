@@ -1,10 +1,11 @@
 const parsePathParameters = function(originalPath, pathWithParams) {
   const obj = {};
+  const beginWithColon = pathPart => pathPart[0] === ':';
   const paramsArray = originalPath.split('/');
-  pathWithParams.split('/').forEach((v, i) => {
-    if (v[0] === ':') {
-      const key = v.slice(1);
-      const param = paramsArray[i];
+  pathWithParams.split('/').forEach((pathPart, index) => {
+    if (beginWithColon(pathPart)) {
+      const key = pathPart.slice(1);
+      const param = paramsArray[index];
       obj[key] = param;
     }
   });
