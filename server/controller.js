@@ -1,15 +1,15 @@
 const dog = require('./dog');
-const dogs = require('./data/dogs.json');
 
 const fetchDogById = (req, res) => {
   const { id } = req.myParams;
-  if (typeof id === 'number') {
-    if (dogs[id]) {
-      return res.json(dog.getDogById(id));
-    }
+  if (!(typeof id === 'number')) {
     return res.status(400).json({});
   }
-  return res.status(400).json({});
+  const dogObj = dog.getDogById(id);
+  if (!dogObj) {
+    return res.status(400).json({});
+  }
+  res.json(dogObj);
 };
 
 module.exports = {
